@@ -6,7 +6,7 @@ import {
   menuClasses
 } from 'react-pro-sidebar'
 import { Box, IconButton, Typography, useTheme } from '@mui/material'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { tokens } from '../../theme'
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'
 import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined'
@@ -35,8 +35,9 @@ const Item = ({ title, selected, setSelected, icon, to }) => {
       style={{ color: colors.grey[100] }}
       onClick={() => setSelected(title)}
     >
-      <Typography>{title}</Typography>
-      <Link to={to} />
+      <Link to={to}>
+        <Typography>{title}</Typography>
+      </Link>
     </MenuItem>
   )
 }
@@ -46,6 +47,7 @@ const Sidebar = () => {
   const colors = tokens(theme.palette.mode)
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [selected, setSelected] = useState('Dashboard')
+  console.log('selected', selected)
 
   return (
     <Box sx={{}}>
